@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutGap="3%">
+<div fxLayout="column" fxLayoutGap="3%" class="overflow">
   <div class="dropDowns">
     <app-movie-dropdowns [languageList]="languageList" (languageChange$)="getLanguage($event)"
       (genreChange$)="getGenre($event)" [layout]=" 'row' " fxHide.xs="true"></app-movie-dropdowns>
@@ -11,13 +11,25 @@
       <mat-tab label="Now Showing">
         <ng-template matTabContent class="movieList">
 
-          <div class="cards-container" fxLayout="row wrap" fxLayoutAlign="space-evenly center" fxLayoutGap="2%">
+          <!-- <div class="cards-container" fxLayout="row wrap" fxLayoutAlign="space-evenly center" fxLayoutGap="2%">
             <ng-container *ngFor="let movie of upcomingList">
-              <app-movie-card class=" seach-movies-cards" [movie]="movie" [theaterList]="theaterList"
+              <app-movie-card class="seach-movies-cards" [movie]="movie" [theaterList]="theaterList"
                 [category]="'nowPlaying'">
               </app-movie-card>
             </ng-container>
-          </div>
+          </div> -->
+
+          <cdk-virtual-scroll-viewport itemSize="560" class="virtualScrollContainer">
+            <div class="movie-container">
+              <ng-container *cdkVirtualFor="let movie of upcomingList">
+                <app-movie-card class="seach-movies-cards" [movie]="movie" [theaterList]="theaterList"
+                  [category]="'nowPlaying'">
+                </app-movie-card>
+              </ng-container>
+            </div>
+
+          </cdk-virtual-scroll-viewport>
+
 
         </ng-template>
       </mat-tab>

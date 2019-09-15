@@ -13,7 +13,7 @@
   </mat-card-header>
   <mat-card-content>
     <div class="credits">
-      <ng-container *ngFor="let cast of (movie?.casts | | slice: 1:5); trackBy: trackCastandCrew">
+      <ng-container *ngFor="let cast of (movie?.casts | slice: 1:5); trackBy: trackCastandCrew">
         <span>
           <img src="{{ castCrewPath }}{{ cast?.profile_path }}" class="castImage"
             title="{{ cast?.name }} / {{ cast?.character }}" onerror="this.src='/assets/download.png'"

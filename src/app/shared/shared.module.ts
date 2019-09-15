@@ -21,6 +21,9 @@ import { PaymentBookingComponent } from './components/payment-booking/payment-bo
 import { SortMoviePipe } from './pipes/sort-movie.pipe';
 import { HomeFilterPipe } from './pipes/home-filter.pipe';
 import { PreBookingComponent } from './components/modals/pre-booking/pre-booking.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { FieldInputComponent } from './components/field-input/field-input.component';
+import { FieldDropdownComponent } from './components/field-dropdown/field-dropdown.component';
 @NgModule({
   declarations: [
     MovieBookingComponent,
@@ -30,7 +33,9 @@ import { PreBookingComponent } from './components/modals/pre-booking/pre-booking
     PaymentBookingComponent,
     SortMoviePipe,
     HomeFilterPipe,
-    PreBookingComponent
+    PreBookingComponent,
+    FieldInputComponent,
+    FieldDropdownComponent
   ],
   imports: [
     FormsModule,
@@ -41,7 +46,8 @@ import { PreBookingComponent } from './components/modals/pre-booking/pre-booking
     MatCheckboxModule,
     MatIconModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    ScrollingModule
   ],
   exports: [
     MovieBookingComponent,
@@ -49,7 +55,13 @@ import { PreBookingComponent } from './components/modals/pre-booking/pre-booking
     MovieDropdownsComponent,
     SortMoviePipe,
     HomeFilterPipe,
-    PreBookingComponent
+    PreBookingComponent,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    ScrollingModule,
+    FieldInputComponent
   ],
   providers: [{ provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: [] }],
   entryComponents: [ConfirmationModalComponent],

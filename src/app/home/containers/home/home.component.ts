@@ -4,21 +4,21 @@ import * as MovieState from '../../../reducers/index';
 import * as UserState from '../../../reducers/index';
 
 import { HomeService } from '../../services/home.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subject, Observable } from 'rxjs';
+import { takeUntil, map } from 'rxjs/operators';
+import { User } from 'src/app/core/models/user.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   nowPlayingMoviesList: any = [];
-  upcomingMoviesList: any = [];
+  upcomingMoviesList: Observable<any[]>;
   genresList: any = [];
-  theaterList: any = [];
-  userPreference: any = [];
-  componentDestroyed$ = new Subject();
+  theaterList: Observable<any[]>;
+  userPreference: Observable<User>;
 
   constructor(
     private store: Store<MovieState.State>,
@@ -29,45 +29,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getNewSetofNowPlayingMovies(1);
-    this.store
-      .pipe(
-        select(MovieState.nowPlayingMoviesSelector),
-        takeUntil(this.componentDestroyed$)
-      )
-      .subscribe(result => {
-        this.nowPlayingMoviesList = result;
-        this.cdRef.detectChanges();
-      });
+    this.nowPlayingMoviesList = this.store.pipe(select(MovieState.nowPlayingMoviesSelector));
 
-    this.store
-      .pipe(
-        select(MovieState.upcomingMovieSelector),
-        takeUntil(this.componentDestroyed$)
-      )
-      .subscribe(result => {
-        this.upcomingMoviesList = result;
-        this.cdRef.detectChanges();
-      });
+    this.upcomingMoviesList = this.store.pipe(select(MovieState.upcomingMovieSelector));
 
-    this.store
-      .pipe(
-        select(MovieState.theaterList),
-        takeUntil(this.componentDestroyed$)
-      )
-      .subscribe(result => {
-        this.theaterList = Object.values(result);
-        this.cdRef.detectChanges();
-      });
+    this.theaterList = this.store.pipe(
+      select(MovieState.theaterList),
+      map(res => Object.values(res))
+    );
 
-    this.userStore
-      .pipe(
-        select(UserState.userSelector),
-        takeUntil(this.componentDestroyed$)
-      )
-      .subscribe(result => {
-        this.userPreference = result.preference;
-        this.cdRef.detectChanges();
-      });
+    this.userPreference = this.userStore.pipe(select(UserState.userSelector));
+
     this.genresList = this.homeService.getGenres();
   }
 
@@ -76,9 +48,5 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   getNewSetofComingMovies(page) {
     this.homeService.getUpcomingMovies(page);
-  }
-
-  ngOnDestroy() {
-    this.componentDestroyed$.next();
   }
 }

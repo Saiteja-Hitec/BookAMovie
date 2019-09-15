@@ -19,6 +19,7 @@ export class SDialogCardsComponent implements AfterContentChecked, DoCheck, OnIn
   @Input() movieFilter; // genre
   @Input() languageList; // list of languages
   @Input() selectedLanguage; // user language selection
+  @Input() sortByPreference; // sorting
   userPreference: any = [];
 
   // movieList DS

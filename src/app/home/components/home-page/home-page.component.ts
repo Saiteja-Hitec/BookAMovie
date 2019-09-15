@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 
 import { HomeService } from '../../services/home.service';
+import { ViewportRuler } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-home-page',
@@ -41,7 +42,7 @@ export class HomePageComponent implements OnInit {
   selectedLanguage = '';
   selectedGenre = '';
   languageList = [{ id: 'en', name: 'English' }, { id: 'ja', name: 'Japanese' }, { id: 'zh', name: 'Chinese' }];
-  constructor(private homeService: HomeService) {}
+  constructor(private homeService: HomeService) {} // To write for viewport unit testing later
 
   ngOnInit() {
     this.getNewNowPlayingMovies.emit(1);
@@ -49,11 +50,12 @@ export class HomePageComponent implements OnInit {
   }
 
   trackMovie(index, movie) {
-    if (movie) {
-      return movie.id;
-    } else {
-      return -1;
-    }
+    // if (movie) {
+    //   return movie.id;
+    // } else {
+    //   return -1;
+    // }
+    return movie ? movie.id : -1;
   }
   getMovies() {}
 

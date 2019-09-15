@@ -1,5 +1,5 @@
 <form fxLayout="column" fxLayoutAlign="center center" [formGroup]="newTheater">
-  <mat-form-field>
+  <!-- <mat-form-field>
     <input matInput placeholder="Theater ID" formControlName="tid">
   </mat-form-field>
   <mat-form-field>
@@ -13,7 +13,10 @@
   </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="capacity" type="number" formControlName="capacity">
-  </mat-form-field>
+  </mat-form-field> -->
+  <div *ngFor="let field of fieldConfigs">
+    <app-field-input [parentFormGroup]="newTheater" [config]="field"></app-field-input>
+  </div>
   <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Submit</button>
 </form>
 

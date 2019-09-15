@@ -14,7 +14,8 @@ import {
   MatTableModule,
   MatButtonToggleModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatRadioModule
 } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -37,7 +38,8 @@ const materialModules = [
   MatSnackBarModule,
   MatTableModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatRadioModule
 ];
 
 @NgModule({
@@ -45,4 +47,4 @@ const materialModules = [
   exports: [materialModules],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class MaterialModule { }
+export class MaterialModule {}

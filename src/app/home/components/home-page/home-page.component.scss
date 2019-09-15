@@ -9,7 +9,8 @@
 }
 
 .virtualScrollContainer {
-  height: 100vh;
+  height: 900px;
+  width: 100%;
 }
 
 .mat-tab-label-active {
@@ -62,3 +63,18 @@ app-movie-dropdowns {
   margin-left: 80%;
   background-color: rgb(48, 48, 48);
 }
+
+.movie-container {
+  margin-top: 35px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.overflow {
+  overflow-y: hidden;
+}
+
+// ::-webkit-scrollbar {
+//   display: none;
+// }

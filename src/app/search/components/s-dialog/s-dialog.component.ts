@@ -5,13 +5,14 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { MovieListService } from '../../../core/movie/movie-list.service';
 import {} from '../../../home/store/actions/home.action';
 import { HomeService } from '../../../home/services/home.service';
 import { SegregateMovieService } from '../../services/segregate-movie.service';
 import { SearchApiService } from '../../services/search-api.service';
 import { OnDestroy } from '@angular/core';
 import { HostBinding } from '@angular/core';
+import { MovieListService } from '../../../core/services/movie/movie-list.service';
+import { MatRadioChange } from '@angular/material';
 
 @Component({
   selector: 'app-s-dialog',
@@ -30,6 +31,7 @@ export class SDialogComponent implements OnInit, OnDestroy {
   selectedGenre: any;
   selectedLanguage = 'en';
   languageList: any;
+  sortByPreference = 1;
 
   movieFilterObj = {
     filter: 'genre',
@@ -76,6 +78,10 @@ export class SDialogComponent implements OnInit, OnDestroy {
         }
       );
     });
+  }
+
+  onSortPrefChange({ value }) {
+    this.sortByPreference = value;
   }
 
   // change detection for genre dropdown

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
+import { fieldConfigs } from '../../fields-config';
 
 @Component({
   selector: 'app-add-theater',
@@ -8,7 +9,6 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./add-theater.component.scss']
 })
 export class AddTheaterComponent implements OnInit {
-
   newTheater = this.fb.group({
     tid: ['', Validators.required],
     name: ['', Validators.required],
@@ -19,12 +19,11 @@ export class AddTheaterComponent implements OnInit {
 
   @Output() addTheater = new EventEmitter();
   @ViewChild('successDialog') successDialog: TemplateRef<any>;
+  fieldConfigs = fieldConfigs;
 
-  constructor(private fb: FormBuilder, private matDialog: MatDialog) {
-  }
+  constructor(private fb: FormBuilder, private matDialog: MatDialog) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   onSubmit() {
     if (this.newTheater.valid) {
       this.matDialog.open(this.successDialog);

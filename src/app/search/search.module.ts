@@ -6,7 +6,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Routes, RouterModule } from '@angular/router';
 import { SearchRoutingModule } from './search-routing.module';
-import { MaterialModule } from '../material.module';
 import { SDialogCardsComponent } from './components/s-dialog-cards/s-dialog-cards.component';
 
 import { SharedModule } from '../shared/shared.module';
@@ -18,7 +17,6 @@ import { SearchComponent } from './container/search/search.component';
     CommonModule,
     RouterModule,
     FlexLayoutModule,
-    MaterialModule,
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
@@ -26,7 +24,6 @@ import { SearchComponent } from './container/search/search.component';
     SearchRoutingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  entryComponents: [SDialogComponent],
-  exports: [MaterialModule]
+  entryComponents: [SDialogComponent]
 })
 export class SearchModule {}
