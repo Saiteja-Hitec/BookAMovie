@@ -1,19 +1,4 @@
 <form fxLayout="column" fxLayoutAlign="center center" [formGroup]="newTheater">
-  <!-- <mat-form-field>
-    <input matInput placeholder="Theater ID" formControlName="tid">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Theater Name" formControlName="name">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="City" formControlName="city">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="G-Location path" formControlName="gLocation">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="capacity" type="number" formControlName="capacity">
-  </mat-form-field> -->
   <div *ngFor="let field of fieldConfigs">
     <app-field-input [parentFormGroup]="newTheater" [config]="field"></app-field-input>
   </div>

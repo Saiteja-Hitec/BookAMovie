@@ -25,6 +25,7 @@ export class SDialogComponent implements OnInit, OnDestroy {
   genresList: any = [];
 
   originalMovieList: any = [];
+  originalMovieObjArray = [];
 
   value = '';
   lang: String = 'en';
@@ -38,6 +39,7 @@ export class SDialogComponent implements OnInit, OnDestroy {
     value: ''
   };
   movieObjArray = []; // movie seperated by language
+  upVoteControl: FormControl;
 
   searchField = new FormControl();
 
@@ -51,11 +53,14 @@ export class SDialogComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // movie from store
+    this.upVoteControl = new FormControl();
     this.store.select(MovieState.nowPlayingMoviesSelector).subscribe(result => {
+      console.log(result);
       this.originalMovieList = result;
       this.moviesList = result;
       this.movieObjArray = this.movieListService.getLanguageList(this.moviesList); // get movies with languages
-      // console.log(this.movieObjArray);
+      this.originalMovieObjArray = this.movieObjArray;
+      console.log(this.movieObjArray);
       // this.movieObjArray = this.segregateMovies.getSortedbyLanguage(this.languageList, this.moviesList);
     });
 
@@ -68,15 +73,23 @@ export class SDialogComponent implements OnInit, OnDestroy {
         searchList => {
           this.moviesList = searchList.results;
           this.movieObjArray = this.movieListService.getLanguageList(this.moviesList);
+          this.originalMovieList = this.movieObjArray;
           // this.movieObjArray = this.segregateMovies.getSortedbyLanguage(this.languageList, this.moviesList);
         },
         error => {
           this.moviesList = this.searchService.searchMovieFromStore(this.originalMovieList, searchString);
-          this.movieObjArray = this.movieListService.getLanguageList(this.moviesList); // get Languages
+          this.movieObjArray = this.movieListService.getLanguageList(this.moviesList);
+          this.originalMovieObjArray = this.movieObjArray;
+          // get Languages
           // console.log('error', this.movieObjArray);
           // this.movieObjArray = this.segregateMovies.getSortedbyLanguage(this.languageList, this.moviesList);
         }
       );
+    });
+
+    this.upVoteControl.valueChanges.subscribe(res => {
+      this.movieObjArray = this.originalMovieObjArray;
+      this.movieObjArray = this.movieListService.getUpVoteFilteredList(this.movieObjArray, res);
     });
   }
 

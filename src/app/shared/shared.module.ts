@@ -14,7 +14,6 @@ import {
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SeatReservationModalComponent } from './components/modals/seat-reservation-modal/seat-reservation-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UiService } from './ui-service.service';
 import { MovieDropdownsComponent } from './movie-dropdowns/movie-dropdowns.component';
 import { ConfirmationModalComponent } from './components/modals/confirmation-modal/confirmation-modal.component';
 import { PaymentBookingComponent } from './components/payment-booking/payment-booking.component';
@@ -24,6 +23,8 @@ import { PreBookingComponent } from './components/modals/pre-booking/pre-booking
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FieldInputComponent } from './components/field-input/field-input.component';
 import { FieldDropdownComponent } from './components/field-dropdown/field-dropdown.component';
+import { ToasterComponent } from './components/toaster/toaster.component';
+import { LogService } from './services/logger.service';
 @NgModule({
   declarations: [
     MovieBookingComponent,
@@ -35,7 +36,8 @@ import { FieldDropdownComponent } from './components/field-dropdown/field-dropdo
     HomeFilterPipe,
     PreBookingComponent,
     FieldInputComponent,
-    FieldDropdownComponent
+    FieldDropdownComponent,
+    ToasterComponent
   ],
   imports: [
     FormsModule,
@@ -61,9 +63,10 @@ import { FieldDropdownComponent } from './components/field-dropdown/field-dropdo
     ReactiveFormsModule,
     FlexLayoutModule,
     ScrollingModule,
-    FieldInputComponent
+    FieldInputComponent,
+    ToasterComponent
   ],
-  providers: [{ provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: [] }],
+  providers: [{ provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: [] }, LogService],
   entryComponents: [ConfirmationModalComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

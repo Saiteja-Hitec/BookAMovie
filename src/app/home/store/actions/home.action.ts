@@ -2,31 +2,38 @@ import { Action } from '@ngrx/store';
 import { Movie } from '../../models/movie.model';
 
 export enum EMovieActionTypes {
-    SET_NOW_PLAYING_MOVIES = '[ Movie ] Set now playing movies',
-    SET_UPCOMING_MOVIES = '[ Movie ] Set up coming movies',
-    SET_CAST_AND_CREW = '[ Movie ] Set Credits',
-    SET_THEATERS = '[ Theaters ] Set Theaters'
+  SET_NOW_PLAYING_MOVIES = '[ Movie ] Set now playing movies',
+  SET_UPCOMING_MOVIES = '[ Movie ] Set up coming movies',
+  SET_CAST_AND_CREW = '[ Movie ] Set Credits',
+  SET_THEATERS = '[ Theaters ] Set Theaters',
+  GET_CREDITS_URL = '[ Credits ] Get Credits'
 }
 
 export class SetNowPlayingMovies implements Action {
-    readonly type = EMovieActionTypes.SET_NOW_PLAYING_MOVIES;
+  readonly type = EMovieActionTypes.SET_NOW_PLAYING_MOVIES;
 
-    constructor(public payload: Movie[]) { }
+  constructor(public payload: Movie[]) {}
 }
 export class SetUpcomingMovies implements Action {
-    readonly type = EMovieActionTypes.SET_UPCOMING_MOVIES;
+  readonly type = EMovieActionTypes.SET_UPCOMING_MOVIES;
 
-    constructor(public payload: Movie[]) { }
+  constructor(public payload: Movie[]) {}
 }
 export class SetCastAndCrew implements Action {
-    readonly type = EMovieActionTypes.SET_CAST_AND_CREW;
+  readonly type = EMovieActionTypes.SET_CAST_AND_CREW;
 
-    constructor(public payload: any) { }
+  constructor(public payload: any) {}
 }
 
 export class SetTheaters implements Action {
-    readonly type = EMovieActionTypes.SET_THEATERS;
+  readonly type = EMovieActionTypes.SET_THEATERS;
 
-    constructor(public payload: any) {}
+  constructor(public payload: any) {}
 }
-export type MovieActionTypes = SetNowPlayingMovies | SetUpcomingMovies| SetCastAndCrew | SetTheaters;
+
+export class GetCreditsUrl implements Action {
+  readonly type = EMovieActionTypes.GET_CREDITS_URL;
+  constructor(public payload: any) {}
+}
+
+export type MovieActionTypes = SetNowPlayingMovies | SetUpcomingMovies | SetCastAndCrew | SetTheaters | GetCreditsUrl;

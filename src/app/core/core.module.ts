@@ -1,12 +1,10 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShellComponent } from './shell/shell.component';
 import { AppRoutingModule } from './../app-routing.module';
 import { UserDetailService } from 'src/app/core/services/userDetails.service';
 import { HeaderComponent } from './shell/header/header.component';
 import { AuthService } from 'angular-6-social-login';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angular-6-social-login';
+import { AuthServiceConfig, GoogleLoginProvider } from 'angular-6-social-login';
 import { SharedModule } from '../shared/shared.module';
 import { SignInService } from './services/signin.service';
 
@@ -21,9 +19,9 @@ export function getAuthServiceConfigs() {
 }
 
 @NgModule({
-  declarations: [ShellComponent, HeaderComponent],
+  declarations: [HeaderComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, SharedModule, AppRoutingModule, FlexLayoutModule],
+  imports: [CommonModule, SharedModule, AppRoutingModule],
   providers: [
     UserDetailService,
     {

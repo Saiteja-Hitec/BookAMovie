@@ -1,16 +1,6 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ChangeDetectionStrategy,
-  ViewChild,
-  EventEmitter,
-  Output,
-  ViewEncapsulation
-} from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 import { HomeService } from '../../services/home.service';
-import { ViewportRuler } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-home-page',
@@ -42,7 +32,7 @@ export class HomePageComponent implements OnInit {
   selectedLanguage = '';
   selectedGenre = '';
   languageList = [{ id: 'en', name: 'English' }, { id: 'ja', name: 'Japanese' }, { id: 'zh', name: 'Chinese' }];
-  constructor(private homeService: HomeService) {} // To write for viewport unit testing later
+  constructor(private homeService: HomeService) {}
 
   ngOnInit() {
     this.getNewNowPlayingMovies.emit(1);

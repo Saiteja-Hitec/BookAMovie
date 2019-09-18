@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as UserState from '../../../reducers/index';
 import { SetUser, RemoveUser } from 'src/app/core/store/action/userDetails.action';
-import { UiService } from '../../../shared/ui-service.service';
+import { UiService } from './../../../shared/services/ui-service.service';
 
 @Component({
   selector: 'app-header',

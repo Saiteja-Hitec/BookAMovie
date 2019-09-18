@@ -9,15 +9,7 @@
   <div>
     <mat-tab-group (selectedIndexChange)="tabChanged($event)" class="tabsGroup">
       <mat-tab label="Now Showing">
-        <ng-template matTabContent class="movieList">
-
-          <!-- <div class="cards-container" fxLayout="row wrap" fxLayoutAlign="space-evenly center" fxLayoutGap="2%">
-            <ng-container *ngFor="let movie of upcomingList">
-              <app-movie-card class="seach-movies-cards" [movie]="movie" [theaterList]="theaterList"
-                [category]="'nowPlaying'">
-              </app-movie-card>
-            </ng-container>
-          </div> -->
+        <ng-template>
 
           <cdk-virtual-scroll-viewport itemSize="560" class="virtualScrollContainer">
             <div class="movie-container">

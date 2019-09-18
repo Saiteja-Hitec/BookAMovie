@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterContentChecked, DoCheck } from '@angular/core';
+import { Component, OnInit, Input, AfterContentChecked, DoCheck, OnChanges } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 // import { MoviePipePipe } from './../../pipes/movie-pipe.pipe';

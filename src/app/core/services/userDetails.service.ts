@@ -6,7 +6,6 @@ import { environment } from '../../../environments/environment';
 import { Store } from '@ngrx/store';
 import * as UserState from '../../reducers/index';
 import { SetUser } from 'src/app/core/store/action/userDetails.action';
-import { User } from 'src/app/core/models/user.model';
 
 import { JSON_SERVER_URLS } from '../../shared/config';
 

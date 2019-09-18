@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild, TemplateRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { theaterList } from 'src/app/reducers';
 import { AdminService } from '../../services/admin.service';
 import { MatDialog } from '@angular/material';
 

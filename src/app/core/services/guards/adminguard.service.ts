@@ -14,7 +14,6 @@ export class AdminguardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     this.store.select(UserState.userSelector).subscribe(result => {
       this.userDetails = result;
-      console.log('userDetails auth check', this.userDetails);
     });
     const authValid = this.userDetails;
     if (authValid && authValid.id !== '' && authValid.role === 'Admin') {

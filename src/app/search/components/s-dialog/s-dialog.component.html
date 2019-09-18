@@ -24,13 +24,13 @@
       </select>
     </mat-form-field>
 
-    <div>
-      <label>Sort By:</label>
-      <mat-radio-group (change)="onSortPrefChange($event)" aria-label="Select an option">
-        <mat-radio-button [checked]="sortByPreference === 1 ? true : false" value="1">Asc</mat-radio-button>
-        <mat-radio-button [checked]="sortByPreference === 2 ? true : false" value="2">Desc</mat-radio-button>
-      </mat-radio-group>
-    </div>
+    <mat-form-field>
+      <mat-select [formControl]="upVoteControl" placeholder="Upvote">
+        <mat-option value="400">400</mat-option>
+        <mat-option value="150">150</mat-option>
+        <mat-option value="200">200</mat-option>
+      </mat-select>
+    </mat-form-field>
 
   </div>
 </mat-dialog-content>

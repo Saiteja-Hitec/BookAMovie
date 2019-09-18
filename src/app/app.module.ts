@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdminModule } from './admin/admin.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from './shared/shared.module';
+import { HttpRequestInterceptor } from './core/interceptors/auth.interceptor';
+import { LogService } from './shared/services/logger.service';
+import { MatSnackBar } from '@angular/material';
 
 @NgModule({
   declarations: [AppComponent, ProfileComponent],
@@ -44,7 +47,7 @@ import { SharedModule } from './shared/shared.module';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   exports: [MaterialModule],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
